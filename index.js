@@ -16,17 +16,10 @@ app.use(cors());
 app.use(bodyParser.json({ extended: true }))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/',router);
-app.post('/singlepost', async(request,response)=>{
-    const name = await Post.find({username: request.body.username});
-    return response.status(200).json(name);
-})
-app.get('/singlepost',async(request,response)=>{
-    const name =await Post.find({username: 'puja'})
-    return response.status(200).json(name);
-})
+ 
 
 
-const PORT =8000;
+const PORT =process.env.PORT || 8000;
 
 app.listen(PORT,()=> console.log(`Server is running successfully on hellooo PORT ${PORT}`));
 
